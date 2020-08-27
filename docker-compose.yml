@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  filebeat:
+    image: ayesyev/filebeat
+    container_name: filebeat
+    hostname: filebeat
+    env_file:
+      - .env
+    volumes:
+      - ./pcap:/pcap
+    command: -e
+    networks:
+      - elastinet
+
+  zeek:
+    image: ayesyev/zeek
+    container_name: zeek 
+    hostname: zeek 
+    volumes:
+      - ./pcap:/pcap
+    network_mode: host
+    cap_add:
+      - NET_RAW
+    command: "-i eth0"
+networks:
+  elastinet:
