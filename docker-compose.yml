@@ -21,6 +21,6 @@ services:
     network_mode: host
     cap_add:
       - NET_RAW
-    command: "-i eth0"
+    command: "-i wlan0 local.zeek"
 networks:
   elastinet:

@@ -36,11 +36,11 @@ run: stop ## Run all docker containers
 
 .PHONY: run-zeek
 run-zeek: stop-zeek ## Run zeek docker container
-	@docker run -d --cap-add=NET_RAW --net=host -v --name zeek `pwd`:/pcap:rw $(ORG)/zeek:$(BUILD) -i eth0
+	@docker run -d --cap-add=NET_RAW --net=host --name zeek -v `pwd`/pcap:/pcap:rw $(ORG)/zeek:$(BUILD) -i eth0
 
 .PHONY: run-filebeat
 run-filebeat: stop-filebeat ## Run filebbeat docker container
-	@docker run -d -v --name filebeat `pwd`:/pcap:rw $(ORG)/filebeat:$(BUILD)
+	@docker run -d --name filebeat -v `pwd`/pcap:/pcap:rw $(ORG)/filebeat:$(BUILD)
 
 .PHONY: stop-zeek
 stop-zeek: ## Kill running zeek docker containers

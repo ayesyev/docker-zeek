@@ -34,8 +34,8 @@ RUN echo "===> Compiling zeek..." \
   && CC=clang ./configure --prefix=/usr/local/zeek \
   --build-type=MinSizeRel \
   --disable-broker-tests \
-  --disable-zeekctl \
   --disable-auxtools \
+  --disable-zeekctl \
   --disable-python \
   && make -j 2 \
   && make install
