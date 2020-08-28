@@ -11,30 +11,30 @@ filebeat.config:
 filebeat.modules:
 - module: zeek
   # All logs
-  connection:
-    enabled: true
-    var.paths:
-      - /pcap/conn*.log    
-  dns:
-    enabled: true
-    var.paths:
-      - /pcap/dns*.log
-  http:
-    enabled: true
-    var.paths:
-      - /pcap/http*.log
-  files:
-    enabled: true
-    var.paths:
-      - /pcap/files*.log
-  ssl:
-    enabled: true
-    var.paths:
-      - /pcap/ssl*.log
-  notice:
-    enabled: true
-    var.paths:
-      - /pcap/notice*.log
+  # connection:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/conn*.log
+  # dns:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/dns*.log
+  # http:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/http*.log
+  # files:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/files*.log
+  # ssl:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/ssl*.log
+  # notice:
+  #   enabled: true
+  #   var.paths:
+  #     - /pcap/notice*.log
 
 processors:
 - add_cloud_metadata: ~
