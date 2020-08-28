@@ -30,7 +30,7 @@ push-filebeat: filebeat ## Push filebeat docker image to docker registry
 	@docker push $(ORG)/filebeat:latest
 
 .PHONY: push
-push: push-zeek push-filebeat ## Push all docker images to docker registry
+push: tag-latest push-zeek push-filebeat ## Push all docker images to docker registry
 
 .PHONY: tag-latest
 tag-latest:
