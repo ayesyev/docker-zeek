@@ -21,14 +21,21 @@ filebeat: ##Build filebeat docker images
 push-zeek: zeek ## Push zeek docker image to docker registry
 	@echo "===> Pushing $(ORG)/zeek:$(BUILD) to docker hub..."
 	@docker push $(ORG)/zeek:$(BUILD)
+	@docker push $(ORG)/zeek:latest
 
 .PHONY: push-filebeat
 push-filebeat: filebeat ## Push filebeat docker image to docker registry
 	@echo "===> Pushing $(ORG)/filebeat:$(BUILD) to docker hub..."
 	@docker push $(ORG)/filebeat:$(BUILD)
+	@docker push $(ORG)/filebeat:latest
 
 .PHONY: push
 push: push-zeek push-filebeat ## Push all docker images to docker registry
+
+.PHONY: tag-latest
+tag-latest:
+	@docker tag $(ORG)/zeek:$(BUILD) $(ORG)/zeek:latest
+	@docker tag $(ORG)/filebeat:$(BUILD) $(ORG)/filebeat:latest
 
 .PHONY: run
 run: stop ## Run all docker containers
